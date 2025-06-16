@@ -11,4 +11,9 @@ public class ProductsController {
 		return "Laptop";
 	}
 
+	@GetMapping("/product")
+	public String get2() {
+		return "Laptop 3";
+	}
+
 }
