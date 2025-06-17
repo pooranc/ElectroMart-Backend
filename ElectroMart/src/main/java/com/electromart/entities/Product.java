@@ -1,17 +1,22 @@
 package com.electromart.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity(name = "product")
 @Table(name = "product")
 public class Product {
 
-	public Product(Long id, String name, String description, double price, int stock, String category) {
+	public Product(Long id, String name, String description, double price, int stock, Category category) {
 		this.id = id;
 		this.name = name;
 		this.description = description;
@@ -41,8 +46,10 @@ public class Product {
 	@Column(name = "stock")
 	private int stock;
 
-	@Column(name = "category")
-	private String category;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "category_id")
+	@JsonBackReference
+	private Category category;
 
 	public Long getId() {
 		return this.id;
@@ -84,11 +91,11 @@ public class Product {
 		this.stock = stock;
 	}
 
-	public String getCategory() {
+	public Category getCategory() {
 		return this.category;
 	}
 
-	public void setCategory(String category) {
+	public void setCategory(Category category) {
 		this.category = category;
 	}
 
