@@ -11,8 +11,22 @@ import jakarta.persistence.Table;
 @Table(name = "product")
 public class Product {
 
+	public Product(Long id, String name, String description, double price, int stock, String category) {
+		this.id = id;
+		this.name = name;
+		this.description = description;
+		this.price = price;
+		this.stock = stock;
+		this.category = category;
+	}
+
+	public Product() {
+
+	}
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
 	private Long id;
 
 	@Column(name = "name")
@@ -29,19 +43,6 @@ public class Product {
 
 	@Column(name = "category")
 	private String category;
-
-	public Product(Long id, String name, String description, double price, int stock, String category) {
-		this.id = id;
-		this.name = name;
-		this.description = description;
-		this.price = price;
-		this.stock = stock;
-		this.category = category;
-	}
-
-	public Product() {
-
-	}
 
 	public Long getId() {
 		return this.id;
