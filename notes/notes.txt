@@ -1,0 +1,28 @@
+CREATE TABLE category (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL
+);
+
+INSERT INTO category (name) VALUES ('Elektronik');
+
+CREATE TABLE product (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    description TEXT,
+    price DOUBLE,
+    stock INT,
+    category_id BIGINT,
+    CONSTRAINT fk_category FOREIGN KEY (category_id) REFERENCES category(id)
+);
+
+
+INSERT INTO product (name, description, price, stock, category_id)
+VALUES ('Telefon', 'Akıllı telefon açıklaması', 2500.00, 10, 1);
+
+docker exec -it postgres-db psql -U admin -d electromarkt
+
+
+
+
+
+
