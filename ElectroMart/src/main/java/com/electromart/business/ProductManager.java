@@ -2,7 +2,6 @@ package com.electromart.business;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.electromart.dataaccess.IProductDal;
@@ -13,7 +12,6 @@ public class ProductManager implements IProductService {
 
 	private IProductDal productDal;
 
-	@Autowired
 	public ProductManager(IProductDal productDal) {
 		this.productDal = productDal;
 	}

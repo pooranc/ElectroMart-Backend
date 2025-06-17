@@ -3,7 +3,6 @@ package com.electromart.dataaccess;
 import java.util.List;
 
 import org.hibernate.Session;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,7 +15,6 @@ public class HibernateProductDal implements IProductDal {
 
 	private EntityManager entityManager;
 
-	@Autowired
 	public HibernateProductDal(EntityManager entityManager) {
 		this.entityManager = entityManager;
 	}
